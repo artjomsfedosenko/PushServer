@@ -6,9 +6,9 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet id="1" author="viktor" context="main">
+    <!--<changeSet id="1" author="viktor" context="main">
         <createSequence sequenceName="clients_seq" />
-    </changeSet>
+    </changeSet>-->
 
     <changeSet id="2" author="viktor" context="main">
         <createTable tableName="clients">
@@ -21,6 +21,26 @@
             </column>
 
             <column name="password" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="3" author="artjomsfedosenko" context="main">
+        <createTable tableName="subscribers">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="endpoint" type="text">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="p256dh" type="text">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="auth" type="text">
                 <constraints nullable="false"/>
             </column>
         </createTable>
